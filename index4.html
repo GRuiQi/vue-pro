@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 加载js文件 -->
+    <script src="vue.beta.17.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="firstName"/>
+        <input v-model="lastName"/>
+        <div>{{fullName}}</div>
+    </div>
+</body> 
+   
+    <script>
+        const {createApp,ref,watch,reactive,computed} = Vue
+        let fullName = ref('')
+        const firstName = ref('1')
+        const lastName = ref('2')
+        const app = {
+            setup(){
+               // let fullName = computed(()=>firstName.value+lastName.value)
+               
+                const fullName = computed({
+                    get:()=>firstName.value + lastName.value,
+
+                    set:(val)=>{
+                        //业务逻辑
+                        firstName.value = val
+                    }
+                })
+                fullName.value = 7
+                return {
+                   firstName,
+                   lastName,
+                   fullName
+                }
+            }        
+        }
+        const vm = createApp(app).mount('#app')
+       
+       
+    </script>
+</html>

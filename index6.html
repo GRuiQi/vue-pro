@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 加载js文件 -->
+    <script src="vue.beta.17.js"></script>
+</head>
+<body>
+    <div id="app">
+       <test-c></test-c>
+    </div>
+</body> 
+    <script>
+        //ES6结构赋值。通过使用createApp这个 API返回一个应用实例
+        const{createApp} = Vue
+        //创建app
+        const vm = createApp(app)
+        //调用component
+        vm.component('test-c',{
+            template:'<div>hello</div.'
+        })
+        //选择元素进行挂载
+        vm.mount('#app')
+    </script>
+</html>

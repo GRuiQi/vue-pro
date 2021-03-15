@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 加载js文件 -->
+    <script src="vue.beta.17.js"></script>
+</head>
+<body>
+    <div id="app">
+       <ul>
+           <li v-for="(item,index) in titles">{{item}}{{index}}</li>
+       </ul>
+       <hr>
+       <ul>
+           <li v-for="(value,key,index) of book">
+               {{key}}:{{value}}:{{index}}
+           </li>
+       </ul>
+    </div>
+</body> 
+    <!-- 写js代码 业务逻辑-->
+    <script>
+        //ES6结构赋值。通过使用createApp这个 API返回一个应用实例
+        const{createApp} = Vue
+        const titles = ["A","B","C"]
+        const app = {
+            //setup:function()  常规写法
+            //setup() ES6写法
+            setup(){
+              
+              //js对象
+                return {
+                  titles,
+                  book:{
+                      title:'百年孤独',
+                      author:'马尔克斯',
+                      pubdate:'2000'
+
+                  }
+                }
+            }
+        }
+        //选择元素进行挂载
+        createApp(app).mount('#app')
+    </script>
+    <style>   
+    </style>
+</html>

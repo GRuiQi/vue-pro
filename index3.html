@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 加载js文件 -->
+    <script src="vue.beta.17.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="name.firstName"/>
+        <input v-model="name.lastName"/>
+        <div>{{name.firstName+name.lastName}}</div>
+    </div>
+</body> 
+   
+    <script>
+        const {createApp,ref,watch,reactive} = Vue
+        let fullName = ref('')
+        //嵌套数据类型包装响应式对象。
+        const name = reactive({
+            firstName:'',
+            lastName:''
+        })
+        const app = {
+            setup(){
+                //Vue监听到函数发送变化的时候，调用函数
+                watch(()=>name.firstName,(newVal,oldVal)=>{
+                    console.log('sss')
+                    fullName.value = name.firstName + 
+                    name.lastName
+                })
+             
+                return {
+                   name
+                }
+            }        
+        }
+
+        const vm = createApp(app).mount('#app')
+       
+       
+    </script>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 加载js文件 -->
+    <script src="vue.beta.17.js"></script>
+</head>
+<body>
+    <div id="app">
+        <input v-model="firstName"/>
+        <input v-model="lastName"/>
+        <div>{{fullName}}</div>
+    </div>
+</body> 
+   
+    <script>
+        const {createApp,ref,watch} = Vue
+        let number = ref(2)
+        const firstName = ref('')
+        const lastName = ref('')
+        let fullName = ref('');
+        const app = {
+            setup(){
+                //Vue监听到函数发送变化的时候，调用函数
+                watch(firstName,(newVal,oldVal)=>{
+                    fullName.value = firstName.value + lastName.value
+                })
+                watch(lastName,(newVal,oldVal)=>{
+                    fullName.value = firstName.value + lastName.value
+                })
+                return {
+                    firstName,
+                    lastName,
+                    fullName
+                }
+            }        
+        }
+
+        const vm = createApp(app).mount('#app')
+       
+       
+    </script>
+</html>
