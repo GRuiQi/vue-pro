@@ -15,9 +15,9 @@
       // Home
     },
     setup () {
-      function onChangeView () {
+      function onChangeView (event) {
         router.push({
-          path: '/detail'
+          path: event
         })
       }
       return {

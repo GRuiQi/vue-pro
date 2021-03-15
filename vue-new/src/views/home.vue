@@ -15,8 +15,8 @@ export default {
     Swiper
   },
   setup (props,context) {
-    function onSwitchClick (event) {
-      context.emit('change-view',event)
+    function onSwitchClick () {
+      context.emit('change-view','/detail')
     }
     return {
       m2,
