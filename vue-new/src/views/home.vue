@@ -1,10 +1,7 @@
 <template>
   <div id="app">
-  <img  class="top-theme" alt="Vue logo" src="../assets/logo.png">
-  <swiper @sub-event="onTestClick" :url="m2"/>
-  <!-- <router-link to="/detail">Detail</router-link> -->
-  <router-link to="/detail">Detail</router-link>
-  <router-view />
+  <img  class="top-theme" alt="Vue logo" src="@/assets/logo.png">
+  <swiper @sub-event="onSwitchClick" :url="m2"/>
   </div>
 </template>
 
@@ -13,17 +10,17 @@ import Swiper from '../components/swiper'
 import m2 from '@/assets/home/m2.jpg'
 
 export default {
-  name: 'App',
+  name: 'Home',
   components: {
     Swiper
   },
-  setup () {
-    function onTestClick (event) {
-      console.log(event)
+  setup (props,context) {
+    function onSwitchClick (event) {
+      context.emit('change-view',event)
     }
     return {
       m2,
-      onTestClick
+      onSwitchClick
     }
   }
 }

@@ -1,16 +1,28 @@
 <template>
   <div id="app">
-    <Home/>
+    <router-view @change-view="onChangeView"/>
+    <!-- <Home /> -->
   </div>
 </template>
 
 <script>
-  import Home from '@/views/home'
-
+  // import Home from '@/views/home'
+  import router from '@/router'
+  
   export default {
     name: 'App',
     components: {
-      Home
+      // Home
+    },
+    setup () {
+      function onChangeView () {
+        router.push({
+          path: '/detail'
+        })
+      }
+      return {
+        onChangeView
+      }
     }
   }
 </script>

@@ -4,7 +4,7 @@ import Detail from '../views/detail.vue'
 
 const routes = [
   {
-    path: '/home',
+    path: '/',
     name: 'Home',
     component: Home
   },
