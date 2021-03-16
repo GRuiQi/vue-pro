@@ -7,14 +7,24 @@
 </template>
 
 <script>
+import router from '@/router'
+import store from '@/store/index'
 export default {
   name: 'Detail',
   components: {
    
   },
-  setup (context) {
+  setup () {
+      console.log(router.currentRoute.value.params)
       function onClick () {
-         context.emit('change-view','/detail/sub')
+         store.commit('changeView',{
+           routerParams: {
+             name: 'SubDetail',
+             params: {
+
+             }
+           }
+         })
       }
 
       return {

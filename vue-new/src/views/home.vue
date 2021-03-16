@@ -8,15 +8,24 @@
 <script>
 import Swiper from '../components/swiper'
 import m2 from '@/assets/home/m2.jpg'
-
+import store from '@/store/index'
 export default {
   name: 'Home',
   components: {
     Swiper
   },
-  setup (props,context) {
+  setup () {
     function onSwitchClick () {
-      context.emit('change-view','/detail')
+      store.commit('changeView',{
+        routerParams: {
+          name: 'Detail',
+          params: {
+            id: 3
+          }
+        }
+      })
+      console.log(store.state.url)
+
     }
     return {
       m2,

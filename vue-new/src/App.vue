@@ -1,27 +1,26 @@
 <template>
   <div id="app">
-    <router-view @change-view="onChangeView"/>
-    <!-- <Home /> -->
+    <router-view/>
   </div>
 </template>
 
 <script>
-  // import Home from '@/views/home'
   import router from '@/router'
-  
+  import {computed,watch} from 'vue'
+  import store from '@/store/index'
   export default {
     name: 'App',
     components: {
-      // Home
     },
     setup () {
-      function onChangeView (event) {
-        router.push({
-          path: event
-        })
-      }
+      const changedUrl = computed(()=>store.state.routerParams)
+      watch(changedUrl,(newVal,oldVal)=>{
+        console.log(oldVal)
+        router.push(newVal)
+      })
+    
       return {
-        onChangeView
+        store
       }
     }
   }
