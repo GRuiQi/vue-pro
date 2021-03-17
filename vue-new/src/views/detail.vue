@@ -15,7 +15,7 @@ export default {
    
   },
   setup () {
-      console.log(router.currentRoute.value.params)
+      console.log(router.currentRoute.value)
       function onClick () {
          store.commit('changeView',{
            routerParams: {
@@ -26,7 +26,6 @@ export default {
            }
          })
       }
-
       return {
         onClick
       }
